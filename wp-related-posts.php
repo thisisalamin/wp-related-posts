@@ -30,12 +30,12 @@ class WP_Related_Posts {
     public function init() {
         // Add a filter that modifies the content of posts
         add_filter( 'the_content', array( $this, 'related_posts' ) , 20);
-        add_action( 'wp_enqueue_scripts', array( $this, 'style_scripts' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'wp_related_post_scripts' ) );
         $this->posts_per_page = apply_filters( 'wp_related_posts_per_page', $this->posts_per_page );
     }
 
     // Function to enqueue styles and scripts
-    public function style_scripts(){
+    public function wp_related_post_scripts(){
         wp_enqueue_style( 'wp-related-posts', plugin_dir_url( __FILE__ ) . 'assets/css/wp-related-posts.css', array(), '1.0', 'all' );
     }
 
